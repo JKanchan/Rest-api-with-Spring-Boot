@@ -25,12 +25,20 @@ public class Personcontroller {
   @Autowired
   private PersonService service;
 
-  @RequestMapping(method=RequestMethod.POST ,value="/add") // Map ONLY POST Requests
+  @RequestMapping(method=RequestMethod.POST ,value="/add") 
   public @ResponseBody String addNewPerson (@RequestBody Person person) {  
      
     System.out.println(person);
     service.save(person);
     return "Saved";
+  }
+  
+  @RequestMapping(method=RequestMethod.PUT ,value="/update") 
+  public @ResponseBody String updatePerson (@RequestBody Person person) {  
+     
+    System.out.println(person);
+    service.update(person);
+    return "updated";
   }
   
   @RequestMapping("/{id}")
